@@ -30,7 +30,7 @@ public class BeerServiceImpl implements BeerService {
     }
 
     @Override
-    public boolean updataBeerById(UUID id) {
+    public boolean updateBeerById(UUID id, BeerDto beerToUpdate) {
         return false;
     }
 

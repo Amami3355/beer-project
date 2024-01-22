@@ -4,11 +4,9 @@ import com.mourad.beerproject.services.BeerService;
 import com.mourad.beerproject.web.model.BeerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,14 +30,14 @@ public class BeerController {
 
     @PostMapping
     public ResponseEntity<?> createBeer(@RequestBody BeerDto beerDto){
-        beerService.createBeer(beerDto);
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+
+        return new ResponseEntity<>(beerService.createBeer(beerDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateBeerById(@RequestBody BeerDto beerDto, @PathVariable UUID id){
-        if (beerService.updataBeerById(id)){
+    public ResponseEntity<?> updateBeerById(@RequestBody BeerDto beerToUpdate, @PathVariable UUID id){
+        if (beerService.updateBeerById(id, beerToUpdate)){
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         }else {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

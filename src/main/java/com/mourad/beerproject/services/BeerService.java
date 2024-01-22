@@ -1,7 +1,6 @@
 package com.mourad.beerproject.services;
 
 import com.mourad.beerproject.web.model.BeerDto;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,7 +11,7 @@ public interface BeerService {
 
     BeerDto createBeer(BeerDto beerDto);
 
-    boolean updataBeerById(UUID id);
+    boolean updateBeerById(UUID id, BeerDto beerToUpdate);
 
     List<BeerDto> getBeers();
 }
